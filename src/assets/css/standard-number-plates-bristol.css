@@ -240,6 +240,9 @@
     left: 0;
     transition: transform 0.7s;
   }
+  #sbs-1984 .cs-title {
+    max-width: 23ch;
+  }
 }
 /* Tablet - 768px */
 @media only screen and (min-width: 48rem) {
