@@ -5,6 +5,7 @@
 @media only screen and (min-width: 0rem) {
   #why-choose-507 {
     padding: var(--sectionPadding);
+    background-color: #f7f7f7;
   }
   #why-choose-507 .cs-container {
     width: 100%;
@@ -189,6 +190,7 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
+    border-radius: 0.5rem;
   }
   #sbs-1586 .cs-content {
     /* set text align to left if content needs to be left aligned */
@@ -621,53 +623,5 @@
 @media only screen and (min-width: 100rem) {
   #faq-709 .cs-graphic {
     display: block;
-  }
-}
-/*-- -------------------------- -->
-<---      Floating WhatsApp      -->
-<--- -------------------------- -*/
-/* Mobile - 360px */
-@media only screen and (min-width: 0rem) {
-  .cs-whatsapp-float {
-    position: fixed;
-    bottom: 1.5rem;
-    right: 1.5rem;
-    width: 4rem;
-    height: 4rem;
-    background-color: #25D366;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    z-index: 9999;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    text-decoration: none;
-  }
-  .cs-whatsapp-float:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-  }
-  .cs-whatsapp-float:active {
-    transform: scale(0.95);
-  }
-  .cs-whatsapp-float img {
-    width: 2rem;
-    height: 2rem;
-    display: block;
-    object-fit: contain;
-  }
-}
-/* Tablet - 768px */
-@media only screen and (min-width: 48rem) {
-  .cs-whatsapp-float {
-    bottom: 2rem;
-    right: 2rem;
-    width: 4.5rem;
-    height: 4.5rem;
-  }
-  .cs-whatsapp-float img {
-    width: 2.5rem;
-    height: 2.5rem;
   }
 }

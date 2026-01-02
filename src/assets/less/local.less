@@ -6,6 +6,7 @@
 @media only screen and (min-width: 0rem) {
     #why-choose-507 {
         padding: var(--sectionPadding);
+        background-color: #f7f7f7;
 
         .cs-container {
             width: 100%;
@@ -217,6 +218,7 @@
               height: 100%;
               width: 100%;
               object-fit: cover;
+              border-radius: 0.5rem;
           }
       }
 
@@ -710,61 +712,6 @@
     #faq-709 {
         .cs-graphic {
             display: block;
-        }
-    }
-}
-
-/*-- -------------------------- -->
-<---      Floating WhatsApp      -->
-<--- -------------------------- -*/
-
-/* Mobile - 360px */
-@media only screen and (min-width: 0rem) {
-    .cs-whatsapp-float {
-        position: fixed;
-        bottom: (24/16rem);
-        right: (24/16rem);
-        width: (64/16rem);
-        height: (64/16rem);
-        background-color: #25D366;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        z-index: 9999;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        text-decoration: none;
-
-        &:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-        }
-
-        &:active {
-            transform: scale(0.95);
-        }
-
-        img {
-            width: (32/16rem);
-            height: (32/16rem);
-            display: block;
-            object-fit: contain;
-        }
-    }
-}
-
-/* Tablet - 768px */
-@media only screen and (min-width: 48rem) {
-    .cs-whatsapp-float {
-        bottom: (32/16rem);
-        right: (32/16rem);
-        width: (72/16rem);
-        height: (72/16rem);
-
-        img {
-            width: (40/16rem);
-            height: (40/16rem);
         }
     }
 }

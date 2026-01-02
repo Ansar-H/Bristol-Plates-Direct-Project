@@ -1,17 +1,18 @@
 module.exports = {
-  name: "Southwest Prestige Hire",
-  email: "southwestprestigehire@gmail.com",
-  phoneForTel: "44-1234-567-890",
-  phoneFormatted: "(44) 1234-567890",
+  name: "Bristol Plates Direct",
+  email: "sales@bristolplatesdirect.com",
+  phoneForTel: "44-7836-778588",
+  phoneFormatted: "(44) 7836 778588",
   address: {
     city: "Bristol",
     country: "UK",
-    // Removed full address, state, and ZIP for privacy
+    lineOne: "113 Gloucester Road North",
+    lineTwo: "Bristol",
+    zip: "BS34 7PT",
   },
   socials: {
-    facebook: "https://www.facebook.com/",
-    instagram: "https://www.instagram.com/",
+    instagram: "https://www.instagram.com/bristolplatesdirect/",
   },
   //! Make sure you include the file protocol (e.g. https://) and that NO TRAILING SLASH is included
-  domain: "https://southwestprestigehire.co.uk",
+  domain: "https://bristolplatesdirect.co.uk",
 };
