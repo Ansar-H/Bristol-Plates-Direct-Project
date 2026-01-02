@@ -116,6 +116,9 @@
     margin: 0;
     color: var(--bodyTextColor);
   }
+  #why-choose-507 .cs-title {
+    max-width: 23ch;
+  }
 }
 /* Tablet - 768px */
 @media only screen and (min-width: 48rem) {
