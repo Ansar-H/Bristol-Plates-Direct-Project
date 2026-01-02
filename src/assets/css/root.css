@@ -43,10 +43,13 @@
   }
   .cs-title {
     font-size: var(--headerFontSize);
-    font-weight: 900;
-    line-height: 1.2em;
+    font-family: 'Bebas Neue', sans-serif;
+    font-weight: 400;
+    line-height: 1.1em;
+    letter-spacing: 0.02em;
     text-align: inherit;
-    max-width: 43.75rem;
+    text-transform: uppercase;
+    max-width: 28.125rem;
     margin: 0 0 1rem 0;
     color: var(--headerColor);
     position: relative;

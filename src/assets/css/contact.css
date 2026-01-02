@@ -142,4 +142,7 @@
   #contact-2251 .cs-label.cs-message {
     grid-column: span 12;
   }
+  #contact-2251 .cs-title {
+    max-width: 30ch;
+  }
 }

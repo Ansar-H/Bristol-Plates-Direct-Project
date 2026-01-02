@@ -115,6 +115,9 @@
   #hero-2151 .cs-graphic {
     bottom: calc(clamp(3.75rem, 15.82vw, 12.5rem)*-1);
   }
+  #hero-2151 .cs-title {
+    max-width: 23ch;
+  }
 }
 /* Large Desktop - 1440px */
 @media only screen and (min-width: 90rem) {

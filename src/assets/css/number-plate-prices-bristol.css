@@ -51,7 +51,7 @@
     line-height: 1.2em;
     text-align: inherit;
     /* 23 characters including spaces wide */
-    max-width: 23ch;
+    max-width: 18ch;
     margin: 0 0 1rem 0;
     color: var(--bodyTextColorWhite);
     position: relative;
@@ -225,6 +225,9 @@
   }
   #hero-1805 .cs-box {
     bottom: 3rem;
+  }
+  #hero-1805 .cs-title {
+    max-width: 18ch;
   }
 }
 /*-- -------------------------- -->

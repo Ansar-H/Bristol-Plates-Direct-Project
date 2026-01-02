@@ -46,10 +46,13 @@ body {
 
 .cs-title {
     font-size: var(--headerFontSize);
-    font-weight: 900;
-    line-height: 1.2em;
+    font-family: 'Bebas Neue', sans-serif;  // ← Add this
+    font-weight: 400;  // ← Change from 900 (Bebas is already bold)
+    line-height: 1.1em;  // ← Slightly tighter for Bebas
+    letter-spacing: 0.02em;  // ← Add slight spacing
     text-align: inherit;
-    max-width: (700/16rem);
+    text-transform: uppercase;  // ← Optional: makes it more impactful
+    max-width: (450/16rem);
     margin: 0 0 (16/16rem) 0;
     color: var(--headerColor);
     position: relative;
