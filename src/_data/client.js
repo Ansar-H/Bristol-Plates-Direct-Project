@@ -1,8 +1,8 @@
 module.exports = {
   name: "Bristol Plates Direct",
   email: "sales@bristolplatesdirect.com",
-  phoneForTel: "44-7836-778588",
-  phoneFormatted: "(44) 7836 778588",
+  phoneForTel: "44-7555-656247",
+  phoneFormatted: "(44) 7555 656247",
   address: {
     city: "Bristol",
     country: "UK",

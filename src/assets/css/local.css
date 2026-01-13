@@ -596,6 +596,7 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
+    object-position: 15% 100%;
   }
 }
 /* Tablet - 768px */
@@ -626,5 +627,8 @@
 @media only screen and (min-width: 100rem) {
   #faq-709 .cs-graphic {
     display: block;
+  }
+  #faq-709 .cs-picture img {
+    object-position: 2% 100%;
   }
 }
