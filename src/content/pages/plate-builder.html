@@ -1,0 +1,268 @@
+---
+title: "Number Plate Builder | Preview Your Plate | Bristol Plates Direct"
+description: "Design your custom number plate online. Choose Standard, 3D Gel, 4D and more — see a live preview then order on WhatsApp in seconds."
+permalink: "plate-builder/"
+---
+
+{% extends "layouts/base.html" %} {% block head %}
+<link rel="stylesheet" href="/assets/css/plate-builder.css" />
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&display=swap" rel="stylesheet">
+{% endblock %} {% block body %}
+
+<!-- ============================================ -->
+<!--                    Hero                      -->
+<!-- ============================================ -->
+
+<section id="pb-hero">
+    <div class="cs-container">
+        <div class="cs-content">
+            <span class="cs-topper">BUILD YOUR PLATE</span>
+            <h1 class="cs-title">Number Plate Builder</h1>
+            <p class="cs-text">Type in your reg, pick your style and see exactly how it looks — then order straight to WhatsApp.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!--               Plate Builder                  -->
+<!-- ============================================ -->
+
+<section id="plate-builder">
+    <div class="cs-container">
+
+        <!-- Left: Controls -->
+        <div class="pb-controls">
+
+            <!-- Reg Input -->
+            <div class="pb-group">
+                <label class="pb-label" for="pb-reg-input">Enter Your Registration</label>
+                <input
+                    type="text"
+                    id="pb-reg-input"
+                    class="pb-reg-input"
+                    placeholder="AB12 CDE"
+                    maxlength="9"
+                    autocomplete="off"
+                    autocapitalize="characters"
+                    spellcheck="false"
+                >
+            </div>
+
+            <!-- Style -->
+            <div class="pb-group">
+                <span class="pb-label">Plate Style</span>
+                <div class="pb-style-grid">
+                    <label class="pb-card">
+                        <input type="radio" name="plate-style" value="standard" checked>
+                        <span class="pb-card-name">Standard</span>
+                        <span class="pb-card-price">£20/pair</span>
+                    </label>
+                    <label class="pb-card">
+                        <input type="radio" name="plate-style" value="3d-gel">
+                        <span class="pb-card-name">3D Gel</span>
+                        <span class="pb-card-price">£30/pair</span>
+                    </label>
+                    <label class="pb-card">
+                        <input type="radio" name="plate-style" value="4d-laser">
+                        <span class="pb-card-name">4D Laser</span>
+                        <span class="pb-card-price">£30/pair</span>
+                    </label>
+                    <label class="pb-card">
+                        <input type="radio" name="plate-style" value="4d-gel">
+                        <span class="pb-card-name">4D Gel</span>
+                        <span class="pb-card-price">£35/pair</span>
+                    </label>
+                    <label class="pb-card">
+                        <input type="radio" name="plate-style" value="4d-retro">
+                        <span class="pb-card-name">4D Retro</span>
+                        <span class="pb-card-price">£40/pair</span>
+                    </label>
+                    <label class="pb-card">
+                        <input type="radio" name="plate-style" value="tinted">
+                        <span class="pb-card-name">Tinted</span>
+                        <span class="pb-card-price">POA</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Badge -->
+            <div class="pb-group">
+                <span class="pb-label">Badge</span>
+                <div class="pb-row">
+                    <label class="pb-card pb-card-sm">
+                        <input type="radio" name="plate-badge" value="GB" checked>
+                        <span class="pb-card-name">🇬🇧 GB</span>
+                    </label>
+                    <label class="pb-card pb-card-sm">
+                        <input type="radio" name="plate-badge" value="UK">
+                        <span class="pb-card-name">🇬🇧 UK</span>
+                    </label>
+                    <label class="pb-card pb-card-sm">
+                        <input type="radio" name="plate-badge" value="none">
+                        <span class="pb-card-name">No Badge</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Single or Pair -->
+            <div class="pb-group">
+                <span class="pb-label">Quantity</span>
+                <div class="pb-row">
+                    <label class="pb-card pb-card-sm">
+                        <input type="radio" name="plate-type" value="pair" checked>
+                        <span class="pb-card-name">Pair (Front + Rear)</span>
+                    </label>
+                    <label class="pb-card pb-card-sm">
+                        <input type="radio" name="plate-type" value="single">
+                        <span class="pb-card-name">Single Plate</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <a href="#" id="pb-order-btn" class="cs-button-solid" target="_blank" rel="noopener">Order on WhatsApp</a>
+            <p class="pb-disclaimer">Prices are per pair (front + rear). Contact us for custom sizing or bulk orders.</p>
+        </div>
+
+        <!-- Right: Preview -->
+        <div class="pb-preview-col">
+            <span class="pb-label">Live Preview</span>
+            <div class="pb-preview" id="pb-preview">
+
+                <!-- Front plate -->
+                <div class="pb-plate-wrap">
+                    <div class="pb-plate pb-front" id="pb-front-plate">
+                        <div class="pb-badge" id="pb-front-badge"></div>
+                        <div class="pb-plate-body">
+                            <span class="pb-reg" id="pb-front-reg">AB12 CDE</span>
+                        </div>
+                    </div>
+                    <span class="pb-plate-label">Front Plate (White)</span>
+                </div>
+
+                <!-- Rear plate -->
+                <div class="pb-plate-wrap" id="pb-rear-wrap">
+                    <div class="pb-plate pb-rear" id="pb-rear-plate">
+                        <div class="pb-badge" id="pb-rear-badge"></div>
+                        <div class="pb-plate-body">
+                            <span class="pb-reg" id="pb-rear-reg">AB12 CDE</span>
+                        </div>
+                    </div>
+                    <span class="pb-plate-label">Rear Plate (Yellow)</span>
+                </div>
+            </div>
+
+            <!-- Style indicator -->
+            <div class="pb-active-style">
+                <span>Style:</span>
+                <strong id="pb-style-name">Standard</strong>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ============================================ -->
+<!--              Floating WhatsApp               -->
+<!-- ============================================ -->
+
+<a href="https://wa.me/+447555656247?text=Hi,%0A%0AI'd%20like%20to%20order%20number%20plates.%0A%0AReg:%20%0AType:%20[Standard/3D/4D/Retro/Tinted/Hex/Short]%0ASingle%20or%20Pair:%20[]%0ADelivery%20or%20Collection:%20[]%0APostcode%20(if%20delivery):%20[]" class="cs-whatsapp-float" aria-label="Contact us on WhatsApp" target="_blank" rel="noopener">
+    <img src="/assets/svgs/whatsapp.svg" alt="WhatsApp" width="32" height="32" loading="lazy">
+</a>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var regInput = document.getElementById('pb-reg-input');
+    var frontReg = document.getElementById('pb-front-reg');
+    var rearReg = document.getElementById('pb-rear-reg');
+    var rearWrap = document.getElementById('pb-rear-wrap');
+    var preview = document.getElementById('pb-preview');
+    var orderBtn = document.getElementById('pb-order-btn');
+    var frontBadge = document.getElementById('pb-front-badge');
+    var rearBadge = document.getElementById('pb-rear-badge');
+    var styleName = document.getElementById('pb-style-name');
+    var frontPlate = document.getElementById('pb-front-plate');
+    var rearPlate = document.getElementById('pb-rear-plate');
+
+    var styleLabels = {
+        'standard': 'Standard',
+        '3d-gel': '3D Gel',
+        '4d-gel': '4D Gel',
+        '4d-laser': '4D Laser',
+        '4d-retro': '4D Retro/Bevelled',
+        'tinted': 'Tinted'
+    };
+
+    function formatReg(val) {
+        return val.toUpperCase().replace(/[^A-Z0-9 ]/g, '').substring(0, 9);
+    }
+
+    function autoSpace(val) {
+        var c = val.toUpperCase().replace(/[^A-Z0-9]/g, '');
+        return c.length > 4 ? c.slice(0, 4) + ' ' + c.slice(4, 8) : c;
+    }
+
+    function badgeHTML(badge) {
+        if (badge === 'none') return '';
+        var uj = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 20" class="pb-uj-svg">' +
+            '<rect width="30" height="20" fill="#012169"/>' +
+            '<line x1="0" y1="0" x2="30" y2="20" stroke="#fff" stroke-width="5"/>' +
+            '<line x1="30" y1="0" x2="0" y2="20" stroke="#fff" stroke-width="5"/>' +
+            '<line x1="0" y1="0" x2="30" y2="20" stroke="#C8102E" stroke-width="2.5"/>' +
+            '<line x1="30" y1="0" x2="0" y2="20" stroke="#C8102E" stroke-width="2.5"/>' +
+            '<rect x="0" y="7" width="30" height="6" fill="#fff"/>' +
+            '<rect x="12" y="0" width="6" height="20" fill="#fff"/>' +
+            '<rect x="0" y="8.5" width="30" height="3" fill="#C8102E"/>' +
+            '<rect x="13" y="0" width="4" height="20" fill="#C8102E"/>' +
+            '</svg>';
+        return '<div class="pb-badge-inner">' + uj + '<span class="pb-badge-text">' + badge + '</span></div>';
+    }
+
+    function update() {
+        var raw = regInput.value;
+        var display = autoSpace(raw) || 'AB12 CDE';
+        frontReg.textContent = display;
+        rearReg.textContent = display;
+
+        var style = document.querySelector('input[name="plate-style"]:checked').value;
+        preview.className = 'pb-preview style-' + style;
+        styleName.textContent = styleLabels[style] || style;
+
+        var badge = document.querySelector('input[name="plate-badge"]:checked').value;
+        var bHTML = badgeHTML(badge);
+        frontBadge.innerHTML = bHTML;
+        rearBadge.innerHTML = bHTML;
+        frontBadge.className = 'pb-badge' + (badge === 'none' ? ' hidden' : '');
+        rearBadge.className = 'pb-badge' + (badge === 'none' ? ' hidden' : '');
+
+        var type = document.querySelector('input[name="plate-type"]:checked').value;
+        var isPair = type === 'pair';
+        rearWrap.style.display = isPair ? '' : 'none';
+
+        var msg =
+            'Hi,\n\nI\'d like to order number plates.\n\n' +
+            'Reg: ' + display + '\n' +
+            'Style: ' + (styleLabels[style] || style) + '\n' +
+            'Single or Pair: ' + (isPair ? 'Pair (Front + Rear)' : 'Single Plate') + '\n' +
+            'Badge: ' + (badge === 'none' ? 'No badge' : badge + ' badge') + '\n' +
+            'Delivery or Collection: []\n' +
+            'Postcode (if delivery): []';
+
+        orderBtn.href = 'https://wa.me/+447555656247?text=' + encodeURIComponent(msg);
+    }
+
+    regInput.addEventListener('input', function () {
+        this.value = formatReg(this.value);
+        update();
+    });
+
+    ['plate-style', 'plate-badge', 'plate-type'].forEach(function (name) {
+        document.querySelectorAll('input[name="' + name + '"]').forEach(function (el) {
+            el.addEventListener('change', update);
+        });
+    });
+
+    update();
+});
+</script>
+{% endblock %}
