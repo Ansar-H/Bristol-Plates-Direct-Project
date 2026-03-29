@@ -30,23 +30,23 @@ permalink: "plate-builder/"
 <section id="plate-builder">
     <div class="cs-container">
 
-        <!-- Left: Controls -->
-        <div class="pb-controls">
+        <!-- Reg Input (order 1 on mobile, top-left on desktop) -->
+        <div class="pb-reg-group">
+            <label class="pb-label" for="pb-reg-input">Enter Your Registration</label>
+            <input
+                type="text"
+                id="pb-reg-input"
+                class="pb-reg-input"
+                placeholder="AB12 CDE"
+                maxlength="9"
+                autocomplete="off"
+                autocapitalize="characters"
+                spellcheck="false"
+            >
+        </div>
 
-            <!-- Reg Input -->
-            <div class="pb-group">
-                <label class="pb-label" for="pb-reg-input">Enter Your Registration</label>
-                <input
-                    type="text"
-                    id="pb-reg-input"
-                    class="pb-reg-input"
-                    placeholder="AB12 CDE"
-                    maxlength="9"
-                    autocomplete="off"
-                    autocapitalize="characters"
-                    spellcheck="false"
-                >
-            </div>
+        <!-- Left: Controls (order 3 on mobile, bottom-left on desktop) -->
+        <div class="pb-controls">
 
             <!-- Style -->
             <div class="pb-group">
@@ -80,6 +80,46 @@ permalink: "plate-builder/"
                     <label class="pb-card">
                         <input type="radio" name="plate-style" value="tinted">
                         <span class="pb-card-name">Tinted</span>
+                        <span class="pb-card-price">POA</span>
+                    </label>
+                    <label class="pb-card">
+                        <input type="radio" name="plate-style" value="electric">
+                        <span class="pb-card-name">Electric</span>
+                        <span class="pb-card-price">POA</span>
+                    </label>
+                    <label class="pb-card">
+                        <input type="radio" name="plate-style" value="hex">
+                        <span class="pb-card-name">Hex</span>
+                        <span class="pb-card-price">POA</span>
+                    </label>
+                    <label class="pb-card">
+                        <input type="radio" name="plate-style" value="short">
+                        <span class="pb-card-name">Short</span>
+                        <span class="pb-card-price">POA</span>
+                    </label>
+                    <label class="pb-card">
+                        <input type="radio" name="plate-style" value="oversize">
+                        <span class="pb-card-name">Oversize</span>
+                        <span class="pb-card-price">POA</span>
+                    </label>
+                    <label class="pb-card">
+                        <input type="radio" name="plate-style" value="bike">
+                        <span class="pb-card-name">Bike Reg</span>
+                        <span class="pb-card-price">POA</span>
+                    </label>
+                    <label class="pb-card">
+                        <input type="radio" name="plate-style" value="jap-import">
+                        <span class="pb-card-name">Jap Import</span>
+                        <span class="pb-card-price">POA</span>
+                    </label>
+                    <label class="pb-card">
+                        <input type="radio" name="plate-style" value="square">
+                        <span class="pb-card-name">Square</span>
+                        <span class="pb-card-price">POA</span>
+                    </label>
+                    <label class="pb-card">
+                        <input type="radio" name="plate-style" value="matte">
+                        <span class="pb-card-name">Matte</span>
                         <span class="pb-card-price">POA</span>
                     </label>
                 </div>
@@ -124,7 +164,7 @@ permalink: "plate-builder/"
             <p class="pb-disclaimer">Prices are per pair (front + rear). Contact us for custom sizing or bulk orders.</p>
         </div>
 
-        <!-- Right: Preview -->
+        <!-- Right: Preview (order 2 on mobile, right column spanning both rows on desktop) -->
         <div class="pb-preview-col">
             <span class="pb-label">Live Preview</span>
             <div class="pb-preview" id="pb-preview">
@@ -185,21 +225,28 @@ document.addEventListener('DOMContentLoaded', function () {
     var rearPlate = document.getElementById('pb-rear-plate');
 
     var styleLabels = {
-        'standard': 'Standard',
-        '3d-gel': '3D Gel',
-        '4d-gel': '4D Gel',
-        '4d-laser': '4D Laser',
-        '4d-retro': '4D Retro/Bevelled',
-        'tinted': 'Tinted'
+        'standard':   'Standard',
+        '3d-gel':     '3D Gel',
+        '4d-gel':     '4D Gel',
+        '4d-laser':   '4D Laser',
+        '4d-retro':   '4D Retro/Bevelled',
+        'tinted':     'Tinted',
+        'electric':   'Electric',
+        'hex':        'Hex',
+        'short':      'Short Plates',
+        'oversize':   'Oversize',
+        'bike':       'Bike Reg',
+        'jap-import': 'Jap Import',
+        'square':     'Square',
+        'matte':      'Matte'
     };
 
-    function formatReg(val) {
-        return val.toUpperCase().replace(/[^A-Z0-9 ]/g, '').substring(0, 9);
-    }
+    /* Shapes that need a different plate aspect-ratio or clip-path */
+    var shapeClasses = ['pb-shape-bike', 'pb-shape-square', 'pb-shape-short', 'pb-shape-jap', 'pb-shape-hex'];
 
-    function autoSpace(val) {
-        var c = val.toUpperCase().replace(/[^A-Z0-9]/g, '');
-        return c.length > 4 ? c.slice(0, 4) + ' ' + c.slice(4, 8) : c;
+    function formatReg(val) {
+        /* Keep letters, numbers and spaces; preserve user's own spacing */
+        return val.toUpperCase().replace(/[^A-Z0-9 ]/g, '').substring(0, 10);
     }
 
     function badgeHTML(badge) {
@@ -219,14 +266,26 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function update() {
+        /* Use the user's own spacing exactly as typed */
         var raw = regInput.value;
-        var display = autoSpace(raw) || 'AB12 CDE';
+        var display = raw || 'AB12 CDE';
         frontReg.textContent = display;
         rearReg.textContent = display;
 
         var style = document.querySelector('input[name="plate-style"]:checked').value;
         preview.className = 'pb-preview style-' + style;
         styleName.textContent = styleLabels[style] || style;
+
+        /* Apply shape class for non-standard plate dimensions */
+        shapeClasses.forEach(function (c) {
+            frontPlate.classList.remove(c);
+            rearPlate.classList.remove(c);
+        });
+        if (style === 'bike')       { frontPlate.classList.add('pb-shape-bike');   rearPlate.classList.add('pb-shape-bike'); }
+        if (style === 'square')     { frontPlate.classList.add('pb-shape-square'); rearPlate.classList.add('pb-shape-square'); }
+        if (style === 'short')      { frontPlate.classList.add('pb-shape-short');  rearPlate.classList.add('pb-shape-short'); }
+        if (style === 'jap-import') { frontPlate.classList.add('pb-shape-jap');    rearPlate.classList.add('pb-shape-jap'); }
+        if (style === 'hex')        { frontPlate.classList.add('pb-shape-hex');    rearPlate.classList.add('pb-shape-hex'); }
 
         var badge = document.querySelector('input[name="plate-badge"]:checked').value;
         var bHTML = badgeHTML(badge);
