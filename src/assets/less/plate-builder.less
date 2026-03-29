@@ -402,10 +402,17 @@
         }
     }
 
-    /* Short — same height as standard, just narrower (340×111mm) */
+    /* Short — same height as standard, just narrower (340×111mm).
+       15rem keeps height visually matching standard on mobile. */
     .pb-shape-short {
         aspect-ratio: 340 / 111;
-        max-width: (352/16rem) !important;
+        max-width: (240/16rem) !important;
+
+        .pb-reg {
+            font-size: clamp(1.6rem, 8.5vw, 2.5rem);
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
     }
 
     /* Oversize */
@@ -441,25 +448,47 @@
         aspect-ratio: 1 / 1;
         max-width: (224/16rem) !important;
         .pb-reg {
-            font-size: clamp(1.6rem, 8vw, 3rem);
+            font-size: clamp(2.5rem, 13vw, 4rem);
             letter-spacing: 0.06em;
             white-space: normal;
-            word-break: break-all;
+            word-break: break-word;
             text-align: center;
+            line-height: 1.1;
         }
     }
 
-    /* Matte — charcoal finish */
-    .pb-preview.style-matte .pb-front {
-        background: #2c2c2c;
-        color: #e8e8e8;
+    /* 4D Retro Gloss — raised letters with a strong glossy sheen */
+    .pb-preview.style-4d-retro-gloss .pb-reg {
+        text-shadow:
+            4px 4px 0 #000,
+            3px 3px 0 #111,
+            2px 2px 0 #222,
+            -1px -1px 0 rgba(255,255,255,0.3);
+        letter-spacing: 0.12em;
     }
-    .pb-preview.style-matte .pb-rear {
-        background: #1e1e1e;
-        color: #c8960a;
+    .pb-preview.style-4d-retro-gloss .pb-plate::before {
+        background: linear-gradient(135deg, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.08) 40%, transparent 65%);
     }
-    .pb-preview.style-matte .pb-plate::before {
-        background: linear-gradient(135deg, rgba(255,255,255,0.04) 0%, transparent 60%);
+
+    /* 4D Retro Matte — raised letters on a flat/matte finish */
+    .pb-preview.style-4d-retro-matte .pb-reg {
+        text-shadow:
+            4px 4px 0 #000,
+            3px 3px 0 #111,
+            2px 2px 0 #222,
+            -1px -1px 0 rgba(255,255,255,0.15);
+        letter-spacing: 0.12em;
+    }
+    .pb-preview.style-4d-retro-matte .pb-front {
+        background: #dcdcdc;
+        color: #1a1a1a;
+    }
+    .pb-preview.style-4d-retro-matte .pb-rear {
+        background: #c8a800;
+        color: #1a1a1a;
+    }
+    .pb-preview.style-4d-retro-matte .pb-plate::before {
+        background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 50%);
     }
 
     /* Active style indicator */
@@ -507,6 +536,11 @@
 
     .pb-style-grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Restore wider short plate on desktop */
+    .pb-shape-short {
+        max-width: (352/16rem) !important;
     }
 
     .pb-preview-col {
