@@ -73,9 +73,14 @@ permalink: "plate-builder/"
                         <span class="pb-card-price">£35/pair</span>
                     </label>
                     <label class="pb-card">
-                        <input type="radio" name="plate-style" value="4d-retro">
-                        <span class="pb-card-name">4D Retro</span>
-                        <span class="pb-card-price">£40/pair</span>
+                        <input type="radio" name="plate-style" value="4d-retro-gloss">
+                        <span class="pb-card-name">4D Retro (gloss letters)</span>
+                        <span class="pb-card-price">POA</span>
+                    </label>
+                    <label class="pb-card">
+                        <input type="radio" name="plate-style" value="4d-retro-matte">
+                        <span class="pb-card-name">4D Retro (matte letters)</span>
+                        <span class="pb-card-price">POA</span>
                     </label>
                     <label class="pb-card">
                         <input type="radio" name="plate-style" value="tinted">
@@ -84,12 +89,12 @@ permalink: "plate-builder/"
                     </label>
                     <label class="pb-card">
                         <input type="radio" name="plate-style" value="electric">
-                        <span class="pb-card-name">Electric</span>
+                        <span class="pb-card-name">EV Plates</span>
                         <span class="pb-card-price">POA</span>
                     </label>
                     <label class="pb-card">
                         <input type="radio" name="plate-style" value="hex">
-                        <span class="pb-card-name">Hex</span>
+                        <span class="pb-card-name">HEX</span>
                         <span class="pb-card-price">POA</span>
                     </label>
                     <label class="pb-card">
@@ -99,17 +104,12 @@ permalink: "plate-builder/"
                     </label>
                     <label class="pb-card">
                         <input type="radio" name="plate-style" value="oversize">
-                        <span class="pb-card-name">Oversize</span>
+                        <span class="pb-card-name">Oversize (21x6)</span>
                         <span class="pb-card-price">POA</span>
                     </label>
                     <label class="pb-card">
                         <input type="radio" name="plate-style" value="bike">
-                        <span class="pb-card-name">Bike Reg</span>
-                        <span class="pb-card-price">POA</span>
-                    </label>
-                    <label class="pb-card">
-                        <input type="radio" name="plate-style" value="jap-import">
-                        <span class="pb-card-name">Jap Import</span>
+                        <span class="pb-card-name">Motorbike (9x7)</span>
                         <span class="pb-card-price">POA</span>
                     </label>
                     <label class="pb-card">
@@ -118,13 +118,8 @@ permalink: "plate-builder/"
                         <span class="pb-card-price">POA</span>
                     </label>
                     <label class="pb-card">
-                        <input type="radio" name="plate-style" value="4d-retro-gloss">
-                        <span class="pb-card-name">4D Retro Gloss</span>
-                        <span class="pb-card-price">POA</span>
-                    </label>
-                    <label class="pb-card">
-                        <input type="radio" name="plate-style" value="4d-retro-matte">
-                        <span class="pb-card-name">4D Retro Matte</span>
+                        <input type="radio" name="plate-style" value="jap-import">
+                        <span class="pb-card-name">Jap Import</span>
                         <span class="pb-card-price">POA</span>
                     </label>
                 </div>
@@ -230,21 +225,20 @@ document.addEventListener('DOMContentLoaded', function () {
     var rearPlate = document.getElementById('pb-rear-plate');
 
     var styleLabels = {
-        'standard':   'Standard',
-        '3d-gel':     '3D Gel',
-        '4d-gel':     '4D Gel',
-        '4d-laser':   '4D Laser',
-        '4d-retro':   '4D Retro/Bevelled',
-        'tinted':     'Tinted',
-        'electric':   'Electric',
-        'hex':        'Hex',
-        'short':      'Short Plates',
-        'oversize':   'Oversize',
-        'bike':       'Bike Reg',
-        'jap-import': 'Jap Import',
+        'standard':       'Standard',
+        '3d-gel':         '3D Gel',
+        '4d-laser':       '4D Laser',
+        '4d-gel':         '4D Gel',
+        '4d-retro-gloss': '4D Retro (gloss letters)',
+        '4d-retro-matte': '4D Retro (matte letters)',
+        'tinted':         'Tinted',
+        'electric':       'EV Plates',
+        'hex':            'HEX',
+        'short':          'Short',
+        'oversize':       'Oversize (21x6)',
+        'bike':           'Motorbike (9x7)',
         'square':         'Square',
-        '4d-retro-gloss': '4D Retro Gloss',
-        '4d-retro-matte': '4D Retro Matte'
+        'jap-import':     'Jap Import'
     };
 
     /* Shapes that need a different plate aspect-ratio or clip-path */
